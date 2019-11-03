@@ -22,7 +22,7 @@ Este proyecto ha sido creado (y sigue desarrollándose) con mucho cariño por:
 * Jose Luis Quintero García, joselquin@gmail.com
 * Vicente Tetuani Sánchez, vtetuani@gmail.com
 
-El actual desarrollo está enel cuaderno Galassify.ipynb
+El actual desarrollo está en el cuaderno Galassify.ipynb
 
 ### Puntos pendientes:
 
