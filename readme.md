@@ -1,4 +1,6 @@
-Galassify
+# Galassify
+
+Segmentación automática de galaxias del SDSS y extracción de outliers.
 
 Galassify es un sistema automático de clustering y extracción de outliers de galaxias a partir de los espectros de éstas en el SDSS (Sloan Digital Sky Survey).
 
@@ -19,3 +21,19 @@ Este proyecto ha sido creado (y sigue desarrollándose) con mucho cariño por:
 * Silvia Peraza Delgado, sperazad@gmail.com
 * Jose Luis Quintero García, joselquin@gmail.com
 * Vicente Tetuani Sánchez, vtetuani@gmail.com
+
+
+### Puntos pendientes:
+
+* Definición de métrica por cuartos para evaluación de autoencoder.
+* Estudio del tratamiento del escalado del espectro antes de pasar por el autoencoder.
+* Pruebas con otro tipo de autoencoders:
+** Stacked (actual).
+** Conv1D.
+** LSTM.
+** Variational.
+* Estudio de validez en la aleatoriedad en la extracción de outliers.
+* Estudio de validez en la aleatoriedad en la extracción de clusters.
+* Embbebded clustering.
+
+
