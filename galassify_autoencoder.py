@@ -8,10 +8,23 @@ Created on Sun Oct  6 19:32:07 2019
 @author: joselquin
 """
 
-from keras.layers import Input, Dense, Activation
-from keras.models import Model, Sequential, load_model
-from keras import optimizers
+import pandas as pd
+from tensorflow.keras.backend import backend
+from tensorflow.keras.layers import Input, Dense, Activation
+from tensorflow.keras.models import Sequential, Model, load_model
+from tensorflow.keras import optimizers, backend
 import galassify_grafica_error
+
+# Función para convertir un dataFrame de Pandas en dataset de Tensorflow
+#
+
+def df_to_dataset(dataframe, shuffle=False, batch_size=32):
+  dataframe = dataframe.copy()
+  ds = tf.data.Dataset.from_tensor_slices((dict(dataframe)))
+  if shuffle:
+    ds = ds.shuffle(buffer_size=len(dataframe))
+  ds = ds.batch(batch_size)
+  return ds
 
 
 # Función para entrenar los dos modelos requeriodos: el autoencoder, que es el modelo completo, y el encoder, que
@@ -27,7 +40,7 @@ import galassify_grafica_error
 # - Si hemos dado a grabar o a cargar el valor True, hay que especificar el nombre de los archivos h5 para ambos
 #        modelor (autoencoder y encoder)
 # - grafica, por si deseamos imprimir la gráfica de errores durante el entrenamiento o no
-def autoencoder(entrada, train_set, test_set, dim_latente = 250, epochs = 125, lr = 0.30,
+def autoencoder_stacked(entrada, train_set, test_set, dim_latente = 250, epochs = 125, lr = 0.30,
                 grabar = False, cargar = False, archivo_encoder = " ", 
                 archivo_autoencoder = " ", grafica = False):
 
@@ -37,7 +50,6 @@ def autoencoder(entrada, train_set, test_set, dim_latente = 250, epochs = 125, l
     else:    
         dim_input = entrada.shape[1]
         adadelta = optimizers.Adadelta(lr=lr, rho=0.95)
-
         input = Input(shape=((dim_input, )))
         encoded = Dense(2000, activation='selu')(input)
         encoded = Dense(1000, activation='selu')(encoded)
