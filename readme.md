@@ -26,7 +26,8 @@ El actual desarrollo está en el cuaderno Galassify.ipynb
 
 ### Puntos pendientes:
 
-* Estudio del tratamiento del escalado del espectro antes de pasar por el autoencoder.
+* Definición de métrica por cuartos para evaluación de autoencoder.
+* Estudio del tratamiento del escalado del espectro antes de pasar por el autoe$
 * Pruebas con otro tipo de autoencoders:
   - Stacked (actual).
   - Conv1D.
